@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Все смешалось — люди, кони | Конные прогулки и туры</title>
+<meta name="description" content="Конный клуб «Все смешалось — люди, кони»: конные прогулки в [регион], конные туры по миру. Спокойные лошади, опытные инструкторы, маленькие группы. Запишитесь онлайн.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Lora:wght@500;700&family=Nunito:wght@400;600;700&display=swap&subset=cyrillic" rel="stylesheet">
+
+<!-- SEO: микроразметка LocalBusiness (данные в [ ] заменить на реальные) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SportsActivityLocation",
+  "additionalType": "https://schema.org/LocalBusiness",
+  "name": "Все смешалось — люди, кони",
+  "description": "Конные прогулки и конные путешествия",
+  "url": "https://[example.com]/",
+  "telephone": "+7 [000] 000-00-00",
+  "priceRange": "₽₽",
+  "image": "https://[example.com]/img/cover.jpg",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "[ул. Луговая, 1]",
+    "addressLocality": "[Город]",
+    "addressRegion": "[Регион]",
+    "addressCountry": "RU"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 55.75, "longitude": 37.6 },
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+    "opens": "09:00", "closes": "20:00"
+  }]
+}
+</script>
+
+<style>
+/* ===== Дизайн-токены: природные тона + один акцент для кнопок ===== */
+:root{
+  --brown:#4a3322;      /* землистый коричневый */
+  --forest:#2f4a3a;     /* лесной зелёный */
+  --sand:#e8d9b8;       /* песочный */
+  --cream:#faf5ea;      /* тёплый кремовый */
+  --accent:#b4501a;     /* акцент: кнопки (контраст с белым ≈ 5:1) */
+  --accent-dark:#8f3e12;
+  --text:#3a2c20;
+  --muted:#6b5a4b;
+  --radius:16px;
+  --shadow:0 6px 24px rgba(74,51,34,.12);
+  --head:'Lora',Georgia,serif;
+  --hand:'Caveat','Segoe Script',cursive;
+  --body:'Nunito',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--body);color:var(--text);background:var(--cream);line-height:1.65;font-size:17px}
+img{max-width:100%;display:block}
+h1,h2,h3{font-family:var(--head);color:var(--brown);line-height:1.2;margin:0 0 .5em}
+h1{font-size:clamp(2.2rem,6vw,4rem)}
+h2{font-size:clamp(1.7rem,4vw,2.5rem)}
+h3{font-size:1.25rem}
+p{margin:0 0 1em}
+a{color:var(--forest)}
+.hand{font-family:var(--hand);font-size:1.7em;color:var(--accent-dark);font-weight:700;line-height:1}
+.wrap{width:min(1160px,100% - 32px);margin-inline:auto}
+section.block{padding:clamp(48px,8vw,96px) 0}
+.alt{background:var(--sand)}
+.dark{background:var(--forest);color:var(--cream)}
+.dark h2,.dark h3{color:var(--cream)}
+.lead{font-size:1.15rem;color:var(--muted);max-width:60ch}
+.center{text-align:center}.center .lead{margin-inline:auto}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+.skip{position:absolute;left:-999px;top:8px;background:#fff;padding:8px 14px;z-index:100;border-radius:8px}
+.skip:focus{left:8px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* Кнопки */
+.btn{display:inline-block;background:var(--accent);color:#fff;border:2px solid var(--accent);padding:.8em 1.6em;border-radius:999px;font:700 1rem var(--body);text-decoration:none;cursor:pointer;transition:transform .2s,background .2s}
+.btn:hover{background:var(--accent-dark);border-color:var(--accent-dark);transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:#fff;border-color:#fff}
+.btn.ghost:hover{background:rgba(255,255,255,.18)}
+.btn.small{padding:.5em 1.1em;font-size:.95rem}
+
+/* Шапка */
+header.top{position:sticky;top:0;z-index:50;background:rgba(250,245,234,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--sand)}
+.bar{display:flex;align-items:center;gap:16px;min-height:68px}
+.logo{font-family:var(--hand);font-size:1.7rem;font-weight:700;color:var(--brown);text-decoration:none;line-height:1}
+nav.main{margin-left:auto}
+nav.main ul{display:flex;gap:4px;list-style:none;margin:0;padding:0}
+nav.main a{display:block;padding:.5em .8em;border-radius:999px;text-decoration:none;color:var(--text);font-weight:600}
+nav.main a:hover{background:var(--sand)}
+nav.main a[aria-current="page"]{background:var(--forest);color:#fff}
+.lang{background:none;border:2px solid var(--forest);color:var(--forest);border-radius:999px;font:700 .9rem var(--body);padding:.3em .8em;cursor:pointer}
+.burger{display:none;background:none;border:0;font-size:1.8rem;cursor:pointer;color:var(--brown)}
+@media(max-width:900px){
+  .burger{display:block;margin-left:auto}
+  nav.main{position:absolute;left:0;right:0;top:100%;background:var(--cream);border-bottom:1px solid var(--sand);display:none;margin:0}
+  nav.main.open{display:block}
+  nav.main ul{flex-direction:column;padding:12px 16px}
+  .bar .lang{order:3}
+}
+
+/* Hero */
+.hero{position:relative;min-height:min(86vh,720px);display:flex;align-items:center;color:#fff;overflow:hidden}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(40,25,15,.72),rgba(40,25,15,.15));z-index:-1}
+.hero h1{color:#fff;max-width:16ch}
+.hero p{font-size:1.25rem;max-width:44ch}
+.hero .hand{color:var(--sand)}
+.hero .btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+.page-head{background:var(--forest);color:var(--cream);padding:clamp(40px,7vw,80px) 0}
+.page-head h1{color:var(--cream);margin:0 0 .3em}
+.page-head p{max-width:60ch;margin:0;font-size:1.1rem}
+
+/* Сетки и карточки */
+.grid{display:grid;gap:22px;margin-top:32px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))}
+.card{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column}
+.card img{width:100%;aspect-ratio:16/10;object-fit:cover}
+.card .body{padding:18px 20px 22px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card .body .btn{margin-top:auto;align-self:flex-start}
+.meta{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 8px;padding:0;list-style:none}
+.meta li{background:var(--sand);border-radius:999px;padding:.15em .75em;font-size:.88rem;font-weight:600;color:var(--brown)}
+.price{font-family:var(--head);font-weight:700;font-size:1.3rem;color:var(--accent-dark)}
+.adv{background:#fff;border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);text-align:center}
+.adv .ico{font-size:2.2rem}
+.steps{counter-reset:s;list-style:none;padding:0;margin:32px 0 0;display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr))}
+.steps li{counter-increment:s;background:rgba(255,255,255,.1);border-radius:var(--radius);padding:20px}
+.steps li::before{content:counter(s);display:block;font-family:var(--hand);font-size:2.6rem;color:var(--sand);line-height:1}
+.person{text-align:center;background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:22px}
+.avatar{width:84px;height:84px;border-radius:50%;margin:0 auto 12px;display:grid;place-items:center;font:700 2rem var(--head);color:#fff}
+blockquote{margin:0;font-style:italic}
+.gallery{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr))}
+.gallery button{padding:0;border:0;border-radius:var(--radius);overflow:hidden;cursor:zoom-in;background:none}
+.gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;transition:transform .4s}
+.gallery button:hover img{transform:scale(1.06)}
+
+/* FAQ */
+details{background:#fff;border-radius:12px;margin-bottom:10px;box-shadow:var(--shadow)}
+summary{cursor:pointer;padding:16px 20px;font-weight:700;list-style:none}
+summary::after{content:"+";float:right;font-size:1.4rem;line-height:1}
+details[open] summary::after{content:"–"}
+details p{padding:0 20px;margin:0 0 16px}
+
+/* Фильтры */
+.filters{display:flex;flex-wrap:wrap;gap:14px;background:#fff;padding:16px 20px;border-radius:var(--radius);box-shadow:var(--shadow);margin-top:-30px;position:relative}
+.filters label,.form label{display:flex;flex-direction:column;font-weight:700;font-size:.92rem;gap:4px;flex:1;min-width:160px}
+select,input,textarea{font:inherit;padding:.65em .8em;border:2px solid #cdbf9f;border-radius:10px;background:#fff;color:var(--text)}
+select:focus,input:focus,textarea:focus{border-color:var(--forest)}
+input[aria-invalid="true"],select[aria-invalid="true"]{border-color:#b3261e}
+.err{color:#b3261e;font-weight:600;font-size:.88rem;min-height:1.2em}
+.empty{padding:24px;text-align:center;color:var(--muted)}
+
+/* Туры */
+.tour{display:grid;grid-template-columns:1fr;gap:0;background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;margin-bottom:28px}
+.tour>img{width:100%;height:100%;min-height:220px;object-fit:cover}
+.tour .body{padding:22px 24px}
+@media(min-width:860px){.tour{grid-template-columns:2fr 3fr}}
+.tour h4{margin:1em 0 .3em;font-family:var(--head);color:var(--forest)}
+.tour ol,.tour ul.plain{margin:0;padding-left:1.2em}
+.map{background:var(--sand);border-radius:12px;padding:8px;margin:10px 0}
+.dates{display:flex;flex-wrap:wrap;gap:8px;padding:0;list-style:none}
+.dates li{background:var(--forest);color:#fff;border-radius:999px;padding:.2em .9em;font-weight:600;font-size:.9rem}
+
+/* Важная информация (F6) */
+.info{background:#fff;border-left:6px solid var(--accent);border-radius:var(--radius);padding:22px 26px;box-shadow:var(--shadow)}
+.info ul{margin:0;padding-left:1.2em;columns:2 280px;column-gap:32px}
+.info li{margin-bottom:.4em}
+
+/* Таблица цен */
+.tbl{width:100%;border-collapse:collapse;background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.tbl th,.tbl td{padding:12px 16px;text-align:left;border-bottom:1px solid var(--sand)}
+.tbl th{background:var(--forest);color:#fff}
+.tblwrap{overflow-x:auto}
+
+/* Форма и календарь */
+.booking{display:grid;gap:28px;grid-template-columns:1fr;align-items:start}
+@media(min-width:900px){.booking{grid-template-columns:1.2fr 1fr}}
+.form{background:#fff;color:var(--text);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow);display:grid;gap:12px;grid-template-columns:1fr 1fr}
+.form .full{grid-column:1/-1}
+.form label{min-width:0}
+@media(max-width:560px){.form{grid-template-columns:1fr}}
+.ok{background:#e4f1e4;border:2px solid var(--forest);color:var(--forest);padding:18px;border-radius:12px;font-weight:700;grid-column:1/-1}
+.cal{background:#fff;color:var(--text);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+.cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;font-family:var(--head);font-weight:700;text-transform:capitalize}
+.cal-head button{background:var(--sand);border:0;border-radius:50%;width:38px;height:38px;cursor:pointer;font-size:1.1rem}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center}
+.cal-grid .dow{font-size:.8rem;font-weight:700;color:var(--muted)}
+.cal-grid button,.cal-grid span.x{aspect-ratio:1;border-radius:10px;border:0;font:600 .95rem var(--body);display:grid;place-items:center}
+.cal-grid button.free{background:#e4f1e4;color:var(--forest);cursor:pointer}
+.cal-grid button.free:hover{background:#c9e3c9}
+.cal-grid button[aria-pressed="true"]{background:var(--accent);color:#fff}
+.cal-grid span.x{color:#a99a85}
+.cal-legend{font-size:.85rem;color:var(--muted);margin:10px 0 0}
+
+.cols{display:grid;gap:28px;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));align-items:start}
+.mapframe{border:0;width:100%;height:340px;border-radius:var(--radius);box-shadow:var(--shadow)}
+
+/* Футер, мессенджер, лайтбокс */
+footer{background:var(--brown);color:var(--sand);padding:36px 0 90px}
+footer a{color:#fff}
+.msg{position:fixed;right:16px;bottom:16px;z-index:60;display:none;background:#1c7a4a;color:#fff;border-radius:999px;padding:.8em 1.3em;font-weight:700;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,.3)}
+@media(max-width:700px){.msg{display:block}}
+dialog.lb{border:0;background:transparent;max-width:min(96vw,1000px);width:100%;padding:0}
+dialog.lb::backdrop{background:rgba(20,12,6,.85)}
+dialog.lb img{width:100%;border-radius:12px;max-height:80vh;object-fit:contain;background:#000}
+dialog.lb .lbbar{display:flex;justify-content:space-between;gap:8px;margin-top:8px}
+dialog.lb button{background:#fff;border:0;border-radius:999px;padding:.5em 1.2em;font:700 1rem var(--body);cursor:pointer}
+dialog.lb .cap{color:#fff;text-align:center;margin-top:6px}
+
+/* Анимации при прокрутке (отключаются при prefers-reduced-motion) */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  *{animation:none!important}
+}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<a class="skip" href="#main" data-i18n="skip">Перейти к содержимому</a>
+
+<header class="top">
+  <div class="wrap bar">
+    <a class="logo" href="#/" data-i18n="logo">Все смешалось — люди, кони</a>
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="nav" aria-label="Menu">☰</button>
+    <nav class="main" id="nav" aria-label="Main">
+      <ul>
+        <li><a href="#/" data-route="home" data-i18n="nav_home">Главная</a></li>
+        <li><a href="#/walks" data-route="walks" data-i18n="nav_walks">Конные прогулки</a></li>
+        <li><a href="#/tours" data-route="tours" data-i18n="nav_tours">Конные путешествия</a></li>
+        <li><a href="#/about" data-route="about" data-i18n="nav_about">О клубе</a></li>
+        <li><a href="#/pricing" data-route="pricing" data-i18n="nav_pricing">Цены и бронирование</a></li>
+        <li><a href="#/contacts" data-route="contacts" data-i18n="nav_contacts">Контакты</a></li>
+      </ul>
+    </nav>
+    <button class="lang" id="lang" aria-label="Language / Язык">EN</button>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+
+<!-- ================= ГЛАВНАЯ ================= -->
+<div data-page="home">
+  <section class="hero" aria-labelledby="h-title">
+    <img id="heroImg" alt="">
+    <div class="wrap">
+      <p class="hand" data-i18n="hero_kicker">конный клуб</p>
+      <h1 id="h-title" data-i18n="hero_title">Где люди и кони становятся друзьями</h1>
+      <p data-i18n="hero_sub">Прогулки на час и путешествия на неделю — по лесам, полям и далёким странам. Без опыта, без спешки, с улыбкой.</p>
+      <div class="btns">
+        <a class="btn" href="#/walks" data-i18n="hero_b1">Выбрать маршрут</a>
+        <a class="btn ghost" href="#/pricing" data-i18n="hero_b2">Записаться</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="adv-t">
+    <div class="wrap center reveal">
+      <h2 id="adv-t" data-i18n="adv_t">Почему к нам возвращаются</h2>
+      <p class="lead" data-i18n="adv_s">Мы делаем так, чтобы первый раз в седле был радостью, а не испытанием.</p>
+      <div class="grid g3" id="advantages"></div>
+    </div>
+  </section>
+
+  <section class="block alt" aria-labelledby="pop-t">
+    <div class="wrap">
+      <div class="reveal"><h2 id="pop-t" data-i18n="pop_t">Популярные направления</h2></div>
+      <div class="grid g4" id="popular"></div>
+      <p class="center" style="margin-top:28px"><a class="btn" href="#/walks" data-i18n="pop_all">Все прогулки</a> <a class="btn small" style="margin-left:8px" href="#/tours" data-i18n="pop_tours">Путешествия</a></p>
+    </div>
+  </section>
+
+  <section class="block dark" aria-labelledby="how-t">
+    <div class="wrap">
+      <h2 id="how-t" data-i18n="how_t">Как проходит прогулка</h2>
+      <ol class="steps" id="steps"></ol>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="hor-t">
+    <div class="wrap">
+      <h2 id="hor-t" data-i18n="hor_t">Наши лошади</h2>
+      <p class="lead" data-i18n="hor_s">У каждой свой характер — мы подберём ту, с которой вам будет спокойно.</p>
+      <div class="grid g4" id="horses"></div>
+    </div>
+  </section>
+
+  <section class="block alt" aria-labelledby="rev-t">
+    <div class="wrap">
+      <h2 id="rev-t" data-i18n="rev_t">Отзывы гостей</h2>
+      <div class="grid g3" id="reviews"></div>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="gal-t">
+    <div class="wrap">
+      <h2 id="gal-t" data-i18n="gal_t">Фотогалерея</h2>
+      <div class="gallery" id="gallery"></div>
+    </div>
+  </section>
+
+  <section class="block alt" aria-labelledby="faq-t">
+    <div class="wrap" style="max-width:820px">
+      <h2 id="faq-t" data-i18n="faq_t">Частые вопросы</h2>
+      <div id="faq"></div>
+    </div>
+  </section>
+
+  <section class="block dark" aria-labelledby="cta-t">
+    <div class="wrap booking">
+      <div>
+        <h2 id="cta-t" data-i18n="cta_t">Готовы познакомиться с лошадьми?</h2>
+        <p class="lead" style="color:var(--sand)" data-i18n="cta_s">Оставьте заявку — мы перезвоним в течение дня и подберём время и маршрут.</p>
+      </div>
+      <div class="form-host" data-form="home"></div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= ПРОГУЛКИ ================= -->
+<div data-page="walks" hidden>
+  <div class="page-head"><div class="wrap">
+    <h1 data-i18n="walks_h">Конные прогулки</h1>
+    <p data-i18n="walks_s">От часа знакомства до целого дня в седле: выбирайте по длительности, уровню и бюджету.</p>
+  </div></div>
+  <section class="block" style="padding-top:0">
+    <div class="wrap">
+      <form class="filters" id="filters" aria-label="Filters">
+        <label><span data-i18n="f_dur">Длительность</span>
+          <select id="fDur"></select></label>
+        <label><span data-i18n="f_lvl">Уровень</span>
+          <select id="fLvl"></select></label>
+        <label><span data-i18n="f_price">Цена до</span>
+          <select id="fPrice"></select></label>
+      </form>
+      <p id="count" class="sr" aria-live="polite"></p>
+      <div class="grid g2" id="walkList" style="margin-top:40px"></div>
+      <div style="margin-top:40px" id="infoWalks"></div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= ПУТЕШЕСТВИЯ ================= -->
+<div data-page="tours" hidden>
+  <div class="page-head"><div class="wrap">
+    <h1 data-i18n="tours_h">Конные путешествия</h1>
+    <p data-i18n="tours_s">Многодневные маршруты: горы, побережье, северные пустоши. Ночлег, питание и сопровождение — внутри.</p>
+  </div></div>
+  <section class="block"><div class="wrap" id="tourList"></div></section>
+</div>
+
+<!-- ================= О КЛУБЕ ================= -->
+<div data-page="about" hidden>
+  <div class="page-head"><div class="wrap">
+    <h1 data-i18n="about_h">О клубе</h1>
+    <p data-i18n="about_s">Небольшая семья людей и лошадей, которая любит делиться своей любовью к седлу.</p>
+  </div></div>
+  <section class="block"><div class="wrap cols">
+    <div><h2 data-i18n="hist_t">История</h2><p data-i18n="hist_p">Всё началось в [2012] году с двух лошадей и одного луга. Друзья приходили кататься — и приводили своих друзей. Так появился клуб, где не нужно «уметь», достаточно хотеть.</p></div>
+    <div><h2 data-i18n="phil_t">Философия</h2><p data-i18n="phil_p">Мы верим, что лошадь — не транспорт, а партнёр. Поэтому мы не торопим, не перегружаем и всегда учим слушать животное. Отсюда и название: у нас всё смешалось — люди, кони, дороги и истории.</p></div>
+  </div></section>
+  <section class="block alt"><div class="wrap"><h2 data-i18n="team_t">Команда инструкторов</h2><div class="grid g3" id="team"></div></div></section>
+  <section class="block"><div class="wrap cols">
+    <div class="info"><h3 data-i18n="safe_t">Правила безопасности</h3><ul id="safety"></ul></div>
+    <div class="info"><h3 data-i18n="care_t">Забота о лошадях</h3><ul id="care"></ul></div>
+  </div></section>
+</div>
+
+<!-- ================= ЦЕНЫ И БРОНИРОВАНИЕ ================= -->
+<div data-page="pricing" hidden>
+  <div class="page-head"><div class="wrap">
+    <h1 data-i18n="pr_h">Цены и бронирование</h1>
+    <p data-i18n="pr_s">Прозрачные цены, честные условия и удобная запись.</p>
+  </div></div>
+  <section class="block"><div class="wrap">
+    <h2 data-i18n="pl_t">Прайс-лист</h2>
+    <div class="tblwrap"><table class="tbl" id="priceTbl"></table></div>
+    <div class="grid g3" id="conds"></div>
+  </div></section>
+  <section class="block alt" id="book"><div class="wrap">
+    <h2 data-i18n="bk_t">Забронировать</h2>
+    <p class="lead" data-i18n="bk_s">Выберите свободную дату в календаре и заполните форму.</p>
+    <div class="booking" style="margin-top:28px">
+      <div class="form-host" data-form="pricing"></div>
+      <div id="calendar"></div>
+    </div>
+  </div></section>
+  <section class="block"><div class="wrap"><div id="infoPricing"></div></div></section>
+</div>
+
+<!-- ================= КОНТАКТЫ ================= -->
+<div data-page="contacts" hidden>
+  <div class="page-head"><div class="wrap">
+    <h1 data-i18n="ct_h">Контакты</h1>
+    <p data-i18n="ct_s">Звоните, пишите, приезжайте в гости — нам всегда рады.</p>
+  </div></div>
+  <section class="block"><div class="wrap cols">
+    <div id="contactInfo"></div>
+    <div>
+      <iframe class="mapframe" loading="lazy" id="mapframe" title="Map"
+        src="https://www.openstreetmap.org/export/embed.html?bbox=37.40%2C55.60%2C37.80%2C55.90&amp;layer=mapnik&amp;marker=55.75%2C37.60"></iframe>
+      <p class="lead" style="margin-top:12px;font-size:.95rem" data-i18n="map_note">Координаты на карте — пример. Замените на реальные.</p>
+    </div>
+  </div></section>
+</div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="hand" style="color:var(--sand)" data-i18n="logo">Все смешалось — люди, кони</p>
+    <p data-i18n="foot">© [2026] Конный клуб. Тел. +7 [000] 000-00-00 · [email@example.com]</p>
+  </div>
+</footer>
+
+<!-- F4: кнопка мессенджера, закреплена на мобильных -->
+<a class="msg" id="msgBtn" href="https://wa.me/[70000000000]" target="_blank" rel="noopener" data-i18n="msg">💬 Написать в WhatsApp</a>
+
+<!-- F5: лайтбокс -->
+<dialog class="lb" id="lb" aria-label="Photo">
+  <img id="lbImg" alt="">
+  <p class="cap" id="lbCap"></p>
+  <div class="lbbar">
+    <button type="button" id="lbPrev" aria-label="←">←</button>
+    <button type="button" id="lbClose" data-i18n="close">Закрыть</button>
+    <button type="button" id="lbNext" aria-label="→">→</button>
+  </div>
+</dialog>
+
+<script>
+/* =========================================================
+   Конный клуб «Все смешалось — люди, кони»
+   Один файл: контент (RU/EN), роутинг по hash, формы, календарь,
+   фильтры, лайтбокс. Данные в [ ] — примеры для замены.
+   ========================================================= */
+
+/* ---------- Тексты интерфейса ---------- */
+const T = {
+ru:{
+ skip:"Перейти к содержимому", logo:"Все смешалось — люди, кони",
+ nav_home:"Главная",nav_walks:"Конные прогулки",nav_tours:"Конные путешествия",nav_about:"О клубе",nav_pricing:"Цены и бронирование",nav_contacts:"Контакты",
+ hero_kicker:"конный клуб", hero_title:"Где люди и кони становятся друзьями",
+ hero_sub:"Прогулки на час и путешествия на неделю — по лесам, полям и далёким странам. Без опыта, без спешки, с улыбкой.",
+ hero_b1:"Выбрать маршрут",hero_b2:"Записаться",
+ adv_t:"Почему к нам возвращаются",adv_s:"Мы делаем так, чтобы первый раз в седле был радостью, а не испытанием.",
+ pop_t:"Популярные направления",pop_all:"Все прогулки",pop_tours:"Путешествия",
+ how_t:"Как проходит прогулка",hor_t:"Наши лошади",hor_s:"У каждой свой характер — мы подберём ту, с которой вам будет спокойно.",
+ rev_t:"Отзывы гостей",gal_t:"Фотогалерея",faq_t:"Частые вопросы",
+ cta_t:"Готовы познакомиться с лошадьми?",cta_s:"Оставьте заявку — мы перезвоним в течение дня и подберём время и маршрут.",
+ walks_h:"Конные прогулки",walks_s:"От часа знакомства до целого дня в седле: выбирайте по длительности, уровню и бюджету.",
+ f_dur:"Длительность",f_lvl:"Уровень",f_price:"Цена до",
+ tours_h:"Конные путешествия",tours_s:"Многодневные маршруты: горы, побережье, северные пустоши. Ночлег, питание и сопровождение — внутри.",
+ about_h:"О клубе",about_s:"Небольшая семья людей и лошадей, которая любит делиться своей любовью к седлу.",
+ hist_t:"История",hist_p:"Всё началось в [2012] году с двух лошадей и одного луга. Друзья приходили кататься — и приводили своих друзей. Так появился клуб, где не нужно «уметь», достаточно хотеть.",
+ phil_t:"Философия",phil_p:"Мы верим, что лошадь — не транспорт, а партнёр. Поэтому мы не торопим, не перегружаем и всегда учим слушать животное. Отсюда и название: у нас всё смешалось — люди, кони, дороги и истории.",
+ team_t:"Команда инструкторов",safe_t:"Правила безопасности",care_t:"Забота о лошадях",
+ pr_h:"Цены и бронирование",pr_s:"Прозрачные цены, честные условия и удобная запись.",pl_t:"Прайс-лист",bk_t:"Забронировать",bk_s:"Выберите свободную дату в календаре и заполните форму.",
+ ct_h:"Контакты",ct_s:"Звоните, пишите, приезжайте в гости — нам всегда рады.",map_note:"Координаты на карте — пример. Замените на реальные.",
+ foot:"© [2026] Конный клуб. Тел. +7 [000] 000-00-00 · [email@example.com]",msg:"💬 Написать в WhatsApp",close:"Закрыть",
+ // формы
+ fm_name:"Ваше имя",fm_phone:"Телефон",fm_date:"Дата",fm_people:"Человек",fm_level:"Опыт верховой езды",fm_route:"Маршрут",fm_comment:"Комментарий",fm_send:"Отправить заявку",
+ lv0:"Новичок",lv1:"Немного умею",lv2:"Опытный наездник",
+ e_name:"Укажите имя (минимум 2 символа).",e_phone:"Введите корректный телефон.",e_date:"Выберите дату не раньше сегодняшней.",e_people:"От 1 до 20 человек.",
+ ok:"Спасибо! Заявка принята. Мы перезвоним в течение дня.",any:"Любой",any_f:"Любая",
+ d1:"до 2 часов",d2:"2–4 часа",d3:"от 4 часов",p_any:"Любая цена",
+ none:"Ничего не найдено — попробуйте изменить фильтры.",found:"Найдено прогулок: ",
+ book:"Забронировать",hours:"ч",days:"дн.",from:"от",per:"/ чел.",group:"Группа до",ppl:"чел.",level:"Уровень",bring:"Что взять с собой",
+ prog:"Программа по дням",map:"Маршрут (схема)",stay:"Ночлег и питание",incl:"Что включено",req:"Требования к опыту",season:"Сезон",dates:"Ближайшие даты",
+ cal_free:"Зелёные дни — есть места. Серые — занято или недоступно.",dow:["Пн","Вт","Ср","Чт","Пт","Сб","Вс"],
+ info_t:"Важно знать",
+ th_walk:"Прогулка",th_dur:"Длительность",th_price:"Цена",th_tours:"Путешествия",
+ contact_h:"Как нас найти",addr:"Адрес",phone:"Телефон",hours_t:"Часы работы",hours_v:"Ежедневно, 09:00–20:00",how:"Как добраться",how_v:"[От станции метро — автобус №1 до остановки «Луг», далее 5 минут пешком. На машине: парковка бесплатная.]",soc:"Мессенджеры и соцсети"
+},
+en:{
+ skip:"Skip to content", logo:"Everything Mixed Up — People & Horses",
+ nav_home:"Home",nav_walks:"Horse rides",nav_tours:"Riding tours",nav_about:"About",nav_pricing:"Prices & booking",nav_contacts:"Contacts",
+ hero_kicker:"riding club", hero_title:"Where people and horses become friends",
+ hero_sub:"One-hour rides and week-long journeys — through forests, fields and faraway lands. No experience needed, no rush, plenty of smiles.",
+ hero_b1:"Choose a route",hero_b2:"Book now",
+ adv_t:"Why guests come back",adv_s:"We make your first time in the saddle a joy, not a challenge.",
+ pop_t:"Popular destinations",pop_all:"All rides",pop_tours:"Tours",
+ how_t:"How a ride works",hor_t:"Our horses",hor_s:"Every horse has a personality — we will match you with one that feels right.",
+ rev_t:"Guest reviews",gal_t:"Photo gallery",faq_t:"FAQ",
+ cta_t:"Ready to meet the horses?",cta_s:"Leave a request — we will call you back within a day and pick a time and route.",
+ walks_h:"Horse rides",walks_s:"From a one-hour introduction to a full day in the saddle: filter by duration, level and budget.",
+ f_dur:"Duration",f_lvl:"Level",f_price:"Price up to",
+ tours_h:"Riding tours",tours_s:"Multi-day journeys: mountains, coast, northern wilds. Lodging, meals and guides included.",
+ about_h:"About the club",about_s:"A small family of people and horses who love sharing the joy of riding.",
+ hist_t:"Our story",hist_p:"It began in [2012] with two horses and one meadow. Friends came to ride — and brought their friends. That is how a club was born where you don't need to «know how», you only need to want to.",
+ phil_t:"Philosophy",phil_p:"We believe a horse is a partner, not transport. That's why we never rush, never overload and always teach guests to listen to the animal. Hence the name: with us, people, horses, roads and stories all get mixed up.",
+ team_t:"Our instructors",safe_t:"Safety rules",care_t:"Horse welfare",
+ pr_h:"Prices & booking",pr_s:"Clear prices, fair terms and easy booking.",pl_t:"Price list",bk_t:"Book a ride",bk_s:"Pick an available date in the calendar and fill in the form.",
+ ct_h:"Contacts",ct_s:"Call, write or drop by — you are always welcome.",map_note:"Map coordinates are an example. Replace with real ones.",
+ foot:"© [2026] Riding club. Tel. +7 [000] 000-00-00 · [email@example.com]",msg:"💬 Message on WhatsApp",close:"Close",
+ fm_name:"Your name",fm_phone:"Phone",fm_date:"Date",fm_people:"Guests",fm_level:"Riding experience",fm_route:"Route",fm_comment:"Comment",fm_send:"Send request",
+ lv0:"Beginner",lv1:"Some experience",lv2:"Experienced rider",
+ e_name:"Enter your name (2+ characters).",e_phone:"Enter a valid phone number.",e_date:"Choose today or a later date.",e_people:"From 1 to 20 guests.",
+ ok:"Thank you! Your request is received. We'll call you within a day.",any:"Any",any_f:"Any",
+ d1:"up to 2 hours",d2:"2–4 hours",d3:"4 hours+",p_any:"Any price",
+ none:"Nothing found — try changing the filters.",found:"Rides found: ",
+ book:"Book",hours:"h",days:"days",from:"from",per:"/ person",group:"Group up to",ppl:"people",level:"Level",bring:"What to bring",
+ prog:"Day-by-day program",map:"Route (schematic)",stay:"Lodging & meals",incl:"Included",req:"Experience required",season:"Season",dates:"Next dates",
+ cal_free:"Green days have spots. Grey days are full or unavailable.",dow:["Mo","Tu","We","Th","Fr","Sa","Su"],
+ info_t:"Good to know",
+ th_walk:"Ride",th_dur:"Duration",th_price:"Price",th_tours:"Tours",
+ contact_h:"Find us",addr:"Address",phone:"Phone",hours_t:"Opening hours",hours_v:"Daily, 09:00–20:00",how:"Getting here",how_v:"[From the metro station take bus #1 to «Meadow» stop, then a 5-minute walk. By car: free parking.]",soc:"Messengers & social"
+}};
+
+/* ---------- Контент (RU/EN). Цены и данные — примеры ---------- */
+const D = {
+advantages:[
+ {i:"🎓",ru:["Опытные инструкторы","Сертифицированные инструкторы с опытом от [5] лет всегда рядом."],en:["Experienced instructors","Certified guides with [5]+ years of experience stay by your side."]},
+ {i:"🐴",ru:["Спокойные лошади","Наши лошади добрые, обученные и привыкли к новичкам."],en:["Calm horses","Our horses are gentle, well-trained and used to beginners."]},
+ {i:"🛡️",ru:["Безопасность","Шлемы, инструктаж и страховка включены в стоимость."],en:["Safety first","Helmets, briefing and insurance are included."]},
+ {i:"👥",ru:["Маленькие группы","Не более [6] человек — внимание каждому."],en:["Small groups","No more than [6] guests — attention for everyone."]},
+ {i:"🌱",ru:["Подходит новичкам","Опыт не нужен: научим всему за 15 минут."],en:["Beginners welcome","No experience needed: we teach the basics in 15 minutes."]}],
+// level: 0 новичок, 1 средний, 2 опытный ; hours — для фильтра
+walks:[
+ {id:"w1",hours:1,level:0,price:2500,group:6,art:"forest",ru:["Знакомство с лошадьми","Час в седле на шаге: учимся садиться, управлять и дружить с лошадью. Идеально для первого раза.","Закрытая обувь, удобные брюки"],en:["Meet the horses","One hour at a walk: learn to mount, steer and befriend your horse. Perfect for a first time.","Closed shoes, comfortable trousers"]},
+ {id:"w2",hours:2,level:0,price:4000,group:6,art:"field",ru:["Лесная прогулка","Два часа по лесным тропам и полевым дорогам, остановка у ручья.","Удобная одежда, вода, фотоаппарат"],en:["Forest ride","Two hours along forest trails and field tracks with a stop by the stream.","Comfortable clothes, water, camera"]},
+ {id:"w3",hours:4,level:1,price:6500,group:5,art:"mountain",ru:["Полдня в седле","Рысь и лёгкий галоп, холмы и речной брод, пикник на привале.","Ветровка, перчатки, солнцезащитный крем"],en:["Half-day ride","Trot and easy canter, hills and a river ford, picnic at the halt.","Windbreaker, gloves, sunscreen"]},
+ {id:"w4",hours:2,level:0,price:4500,group:6,art:"sunset",ru:["Закат и рассвет","Встречаем солнце верхом: тихие поля, золотой свет и чай из термоса.","Тёплая кофта, фонарик на рассвет"],en:["Sunset & sunrise","Greet the sun on horseback: quiet fields, golden light and thermos tea.","Warm sweater, torch for sunrise"]},
+ {id:"w5",hours:2,level:0,price:9000,group:2,art:"sunset2",ru:["Романтическая прогулка","Для двоих: отдельный инструктор, закат, бокал игристого на привале (цена за пару).","Красивый наряд для фото"],en:["Romantic ride","For two: private guide, sunset and a glass of sparkling wine at the halt (price per couple).","A nice outfit for photos"]},
+ {id:"w6",hours:2,level:0,price:3000,group:8,art:"field",ru:["Семейная прогулка","Спокойный маршрут для родителей и детей от [7] лет, с играми и угощением.","Одежда по погоде, запасная футболка"],en:["Family ride","A gentle route for parents and kids from [7], with games and treats.","Weather-ready clothes, spare T-shirt"]},
+ {id:"w7",hours:1,level:0,price:1800,group:4,art:"forest",ru:["Детская прогулка (с поводом)","Малыши от [4] лет катаются на пони, инструктор ведёт лошадь в поводу.","Шапка или кепка, удобная обувь"],en:["Kids' ride (led)","Little ones from [4] ride ponies, the instructor leads the horse by hand.","Hat or cap, comfortable shoes"]}],
+tours:[
+ {id:"t1",days:5,price:58000,art:"mountain",stops:5,
+  ru:{t:"Горный Алтай, 5 дней",d:"Пять дней среди хребтов, кедров и бирюзовых рек.",prog:["Встреча, инструктаж, первый переход (3 ч)","Долина реки, ночёвка в юртах","Перевал и альпийские луга","Горячие источники и свободное время","Возвращение и прощальный ужин"],stay:"Юрты и гостевые дома, трёхразовое питание, костёр.",incl:["Лошадь и снаряжение","Проводники и повар","Питание и ночлег","Трансфер от [города]"],req:"Уверенный шаг и рысь, 5–6 ч в седле в день.",season:"Июнь — сентябрь"},
+  en:{t:"Altai Mountains, 5 days",d:"Five days among ridges, cedars and turquoise rivers.",prog:["Welcome, briefing, first ride (3 h)","River valley, night in yurts","Mountain pass and alpine meadows","Hot springs and free time","Return and farewell dinner"],stay:"Yurts and guesthouses, three meals a day, campfire.",incl:["Horse and equipment","Guides and cook","Meals and lodging","Transfer from [city]"],req:"Confident walk and trot, 5–6 hours in the saddle daily.",season:"June — September"},
+  dates:["[12.06]","[03.07]","[24.07]","[14.08]"]},
+ {id:"t2",days:3,price:34000,art:"sea",stops:3,
+  ru:{t:"Побережье и дюны, 3 дня",d:"Рысью вдоль моря, по дюнам и сосновым лесам.",prog:["Выезд вдоль берега, обед на пляже","Сосновый лес и маяк","Рассвет на дюнах и возвращение"],stay:"Небольшие гостевые дома у моря, завтрак и ужин.",incl:["Лошадь и снаряжение","Сопровождающий автомобиль","Завтраки и ужины"],req:"Подходит и новичкам с опытом от [3] прогулок.",season:"Май — октябрь"},
+  en:{t:"Coast & dunes, 3 days",d:"Trot along the sea, over dunes and through pine forests.",prog:["Ride along the shore, lunch on the beach","Pine forest and lighthouse","Sunrise on the dunes and return"],stay:"Small seaside guesthouses, breakfast and dinner.",incl:["Horse and equipment","Support vehicle","Breakfasts and dinners"],req:"Suitable for beginners with [3]+ prior rides.",season:"May — October"},
+  dates:["[20.05]","[10.06]","[05.09]"]},
+ {id:"t3",days:7,price:129000,art:"iceland",stops:7,
+  ru:{t:"Исландия на лошадях, 7 дней",d:"Путешествие по вулканическим долинам на крепких исландских лошадях.",prog:["Прилёт и знакомство с лошадьми","Долина гейзеров","Лавовые поля","Водопады и чёрные пески","Горные тропы","Побережье и тюлени","Прощальный ужин"],stay:"Фермерские гостевые дома, полный пансион.",incl:["Исландские лошади","Местные проводники","Пансион","Трансферы внутри маршрута"],req:"Уверенная рысь и опыт от [10] поездок. Авиабилеты не включены.",season:"Июнь — август"},
+  en:{t:"Iceland on horseback, 7 days",d:"A journey through volcanic valleys on sturdy Icelandic horses.",prog:["Arrival and meeting the horses","Geyser valley","Lava fields","Waterfalls and black sands","Mountain trails","Coast and seals","Farewell dinner"],stay:"Farm guesthouses, full board.",incl:["Icelandic horses","Local guides","Full board","Transfers on route"],req:"Confident trot and [10]+ previous rides. Flights not included.",season:"June — August"},
+  dates:["[18.06]","[16.07]","[06.08]"]}],
+steps:{ru:["Встреча","Инструктаж","Знакомство с лошадью","Сама прогулка","Чай и возвращение"],
+ en:["Welcome","Briefing","Meeting your horse","The ride itself","Tea and return"]},
+stepsD:{ru:["Встречаем вас на конюшне и угощаем чаем.","Рассказываем правила и выдаём шлем.","Знакомимся, гладим, подбираем седло.","Выезжаем с инструктором по маршруту.","Угощаем лошадей, делимся фото."],
+ en:["We greet you at the stable with tea.","We explain the rules and give you a helmet.","Say hello, pet, adjust the saddle.","Set off with your instructor.","Treat the horses and share photos."]},
+horses:[
+ {n:{ru:"Бусинка",en:"Businka"},art:"field",ru:"Самая ласковая: любит яблоки и маленьких всадников.",en:"The sweetest: loves apples and young riders."},
+ {n:{ru:"Гром",en:"Grom"},art:"mountain",ru:"Сильный и надёжный, для длинных маршрутов.",en:"Strong and dependable, for long routes."},
+ {n:{ru:"Лютик",en:"Lyutik"},art:"forest",ru:"Хитрый шутник, всегда ищет вкусняшки в карманах.",en:"A cheeky joker, always checking pockets for treats."},
+ {n:{ru:"Звезда",en:"Zvezda"},art:"sunset",ru:"Спокойная и грациозная, идеальна для новичков.",en:"Calm and graceful, perfect for beginners."}],
+reviews:[
+ {n:"Анна / Anna",c:"#8f3e12",ru:"Боялась лошадей, а теперь записалась на второй раз! Инструктор был очень терпелив.",en:"I was afraid of horses, and now I've booked again! The instructor was so patient."},
+ {n:"Дмитрий / Dmitry",c:"#2f4a3a",ru:"Ездили всей семьёй, дети в восторге. Закат в поле — незабываемо.",en:"Went as a family, the kids loved it. Sunset in the field — unforgettable."},
+ {n:"Elena & Tom",c:"#4a3322",ru:"Алтайский тур — лучшее путешествие за много лет. Отличная организация.",en:"The Altai tour was the best trip in years. Superbly organised."}],
+gallery:[
+ {art:"sunset",ru:"Всадник на закате",en:"Rider at sunset"},{art:"forest",ru:"Лесная тропа",en:"Forest trail"},
+ {art:"field",ru:"Лошади в поле",en:"Horses in a field"},{art:"mountain",ru:"Горный перевал",en:"Mountain pass"},
+ {art:"sea",ru:"Рысью вдоль моря",en:"Trotting by the sea"},{art:"iceland",ru:"Северные долины",en:"Northern valleys"},
+ {art:"sunset2",ru:"Прогулка для двоих",en:"Ride for two"},{art:"field",ru:"Утро на конюшне",en:"Morning at the stable"}],
+faq:[
+ {ru:["Нужен ли опыт?","Нет. Для новичков есть спокойные лошади и подробный инструктаж."],en:["Do I need experience?","No. We have calm horses and a thorough briefing for beginners."]},
+ {ru:["Что надеть?","Закрытую обувь с небольшим каблуком и удобные брюки. Шлем выдаём."],en:["What should I wear?","Closed shoes with a small heel and comfortable trousers. We provide helmets."]},
+ {ru:["Есть ли ограничения по весу?","Да, до [90] кг. Если сомневаетесь — позвоните, подберём лошадь."],en:["Is there a weight limit?","Yes, up to [90] kg. If unsure, call us and we'll find a suitable horse."]},
+ {ru:["С какого возраста можно?","Верхом на пони — с [4] лет, на лошади — с [7] лет."],en:["What is the minimum age?","On a pony from [4], on a horse from [7]."]},
+ {ru:["Что если пойдёт дождь?","Лёгкий дождь не проблема, дадим дождевики. При грозе перенесём бесплатно."],en:["What if it rains?","Light rain is fine, we lend raincoats. In a storm we reschedule for free."]},
+ {ru:["Как отменить бронь?","Бесплатно за [48] часов. Позже — перенос даты без потерь."],en:["How do I cancel?","Free up to [48] hours ahead. Later — we reschedule without loss."]}],
+team:[
+ {n:"Мария / Maria",c:"#8f3e12",ru:"Главный инструктор. Опыт [12] лет. Сертификат [FEI/РКФ].",en:"Head instructor. [12] years of experience. Certified [FEI/national]."},
+ {n:"Игорь / Igor",c:"#2f4a3a",ru:"Проводник туров. [8] лет в маршрутах, первая помощь.",en:"Tour guide. [8] years on routes, first-aid certified."},
+ {n:"Софья / Sofia",c:"#4a3322",ru:"Детский инструктор. Педагогическое образование, [6] лет с детьми.",en:"Kids' instructor. Teaching degree, [6] years with children."}],
+safety:{ru:["Шлем обязателен для всех.","Инструктаж перед каждой прогулкой.","Группы — не больше [6] человек.","Лошадь подбирается под опыт и вес.","Аптечка и связь на каждом маршруте."],en:["Helmets are mandatory for everyone.","Briefing before every ride.","Groups of no more than [6].","Horse matched to experience and weight.","First-aid kit and radio on every route."]},
+care:{ru:["Не более [2] выездов в день для лошади.","Выходные и отпуск для каждой лошади.","Ветеринар и кузнец по графику.","Пастбище и натуральный корм.","Лошади не работают в жару выше [30]°C."],en:["Max [2] rides per horse a day.","Days off and holidays for every horse.","Regular vet and farrier visits.","Pasture and natural feed.","No work in heat above [30]°C."]},
+info:{ru:["Вес до [90] кг (для туров до [85] кг).","Возраст: пони с [4] лет, лошадь с [7] лет.","Одежда: закрытая обувь с каблуком, длинные брюки, по погоде.","Противопоказания: беременность, проблемы с позвоночником, остеопороз, эпилепсия, алкогольное опьянение.","При хронических заболеваниях проконсультируйтесь с врачом.","Шлем и защитный жилет выдаём бесплатно."],
+ en:["Weight up to [90] kg (tours up to [85] kg).","Age: pony from [4], horse from [7].","Clothing: closed shoes with a heel, long trousers, dress for the weather.","Contraindications: pregnancy, spine problems, osteoporosis, epilepsy, alcohol intoxication.","Consult a doctor if you have chronic conditions.","Helmet and safety vest provided free."]},
+conds:{ru:[["Условия отмены","Бесплатно за [48] часов до начала. Позже — перенос на другую дату. Для туров — за [14] дней."],["Скидки","Группы от [5] человек — [10]%. Дети до [12] лет — [20]%. Постоянным гостям — карта клуба."],["Подарочные сертификаты","Номинал [от 2 500 ₽] или на конкретную прогулку, действует [12] месяцев. Печатный или электронный."]],
+ en:[["Cancellation","Free up to [48] hours before start. Later — reschedule. For tours — [14] days."],["Discounts","Groups of [5]+ — [10]%. Kids under [12] — [20]%. Club card for regulars."],["Gift certificates","Value [from 2,500 RUB] or for a specific ride, valid [12] months. Printed or e-version."]]}
+};
+
+/* ---------- Состояние ---------- */
+let L = 'ru';
+try{ L = localStorage.getItem('lang') || ((navigator.language||'ru').startsWith('en') ? 'en' : 'ru'); }catch(e){}
+if(!T[L]) L='ru';
+let selectedDate = '';          // выбранная дата (YYYY-MM-DD) — общая для всех форм
+let selectedRoute = '';         // выбранный маршрут
+let calMonth = new Date(); calMonth.setDate(1);
+let curRoute = 'home';
+
+const $ = (s,r=document)=>r.querySelector(s);
+const $$ = (s,r=document)=>[...r.querySelectorAll(s)];
+const s = k => T[L][k];
+const pick = o => o[L];
+const money = n => '[' + n.toLocaleString(L==='ru'?'ru-RU':'en-US') + ' ₽]';
+const esc = x => String(x).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+/* ---------- Иллюстрации-заглушки (замените на фото) ---------- */
+const PAL = {
+ sunset:["#f6c177","#d9731f","#5a3e2b","#2b1f18"], sunset2:["#f3a6a0","#c9603c","#4a2b3a","#25151c"],
+ forest:["#cfe3c9","#6f9a76","#2f4a3a","#1c2e24"], field:["#bfe0ef","#f3e6c1","#c9a45c","#2b1f18"],
+ mountain:["#cfd9e3","#e8d9b8","#6b7a8a","#2b1f18"], sea:["#bfe0ef","#f3e6c1","#5d8fa6","#2b1f18"], iceland:["#dfe8ee","#b9c7d0","#4a5560","#1d242a"]};
+function art(kind,label,horse=true,w=800,h=500){
+  const p = PAL[kind]||PAL.field;
+  const hills = kind==='forest'
+    ? [60,160,260,360,460,560,660,740].map((x,i)=>`<polygon points="${x},330 ${x+45},${200-(i%3)*25} ${x+90},330" fill="${p[2]}"/>`).join('')
+    : `<path d="M0 330 Q200 ${kind==='mountain'||kind==='iceland'?200:280} 400 310 T800 300 V500 H0Z" fill="${p[2]}"/>`;
+  const sun = (kind==='sunset'||kind==='sunset2') ? `<circle cx="580" cy="250" r="70" fill="#ffe4a8"/>` : '';
+  const hr = horse ? `<g fill="${p[3]}" transform="translate(420 400) scale(1.5)"><ellipse rx="60" ry="26"/><polygon points="40,-12 70,-60 90,-52 62,0"/><polygon points="68,-62 112,-40 106,-28 78,-40 66,-50"/><rect x="-48" y="10" width="8" height="55"/><rect x="-30" y="10" width="8" height="55"/><rect x="30" y="10" width="8" height="55"/><rect x="44" y="10" width="8" height="55"/><path d="M-58 -10 Q-92 10 -80 52" stroke="${p[3]}" stroke-width="7" fill="none"/><circle cx="-4" cy="-52" r="10"/><rect x="-14" y="-46" width="20" height="24" rx="6"/></g>` : '';
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${p[0]}"/><stop offset="1" stop-color="${p[1]}"/></linearGradient></defs><rect width="${w}" height="${h}" fill="url(#g)"/>${sun}${hills}<rect y="440" width="${w}" height="60" fill="${p[3]}" opacity=".25"/>${hr}</svg>`;
+  return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+}
+const img = (kind,alt,horse=true) => `<img src="${art(kind,alt,horse)}" alt="${esc(alt)}" loading="lazy" width="800" height="500">`;
+
+/* Схема маршрута тура */
+function routeMap(n){
+  const pts = Array.from({length:n},(_,i)=>[30+i*(240/Math.max(n-1,1)), 60+Math.sin(i*1.4)*28]);
+  const line = pts.map(p=>p.join(',')).join(' ');
+  const dots = pts.map((p,i)=>`<circle cx="${p[0]}" cy="${p[1]}" r="9" fill="#b4501a"/><text x="${p[0]}" y="${p[1]+4}" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">${i+1}</text>`).join('');
+  return `<svg class="map" viewBox="0 0 300 120" role="img" aria-label="${s('map')}"><polyline points="${line}" fill="none" stroke="#2f4a3a" stroke-width="3" stroke-dasharray="6 5"/>${dots}</svg>`;
+}
+
+/* ---------- Рендер блоков ---------- */
+const lvName = i => s('lv'+i);
+function walkCard(w,compact){
+  const t = pick(w);
+  return `<article class="card reveal">${img(w.art,t[0])}<div class="body">
+    <h3>${esc(t[0])}</h3>
+    <ul class="meta"><li>⏱ ${w.hours} ${s('hours')}</li><li>${esc(lvName(w.level))}</li>${compact?'':`<li>${s('group')} ${w.group} ${s('ppl')}</li>`}</ul>
+    ${compact?'':`<p>${esc(t[1])}</p><p><strong>${s('bring')}:</strong> ${esc(t[2])}</p>`}
+    <div class="price">${money(w.price)}</div>
+    <button class="btn small" data-book="${w.id}">${s('book')}</button></div></article>`;
+}
+function renderHome(){
+  $('#advantages').innerHTML = D.advantages.map(a=>`<div class="adv reveal"><div class="ico" aria-hidden="true">${a.i}</div><h3>${a[L][0]}</h3><p>${a[L][1]}</p></div>`).join('');
+  $('#popular').innerHTML = D.walks.slice(0,3).map(w=>walkCard(w,true)).join('') +
+    D.tours.slice(0,1).map(t=>`<article class="card reveal">${img(t.art,t[L].t)}<div class="body"><h3>${t[L].t}</h3><ul class="meta"><li>📅 ${t.days} ${s('days')}</li><li>${s('lv1')}</li></ul><div class="price">${s('from')} ${money(t.price)}</div><a class="btn small" href="#/tours">${s('book')}</a></div></article>`).join('');
+  $('#steps').innerHTML = D.steps[L].map((x,i)=>`<li class="reveal"><h3>${x}</h3><p>${D.stepsD[L][i]}</p></li>`).join('');
+  $('#horses').innerHTML = D.horses.map(h=>`<article class="card reveal">${img(h.art,h.n[L])}<div class="body"><h3>${h.n[L]}</h3><p>${h[L]}</p></div></article>`).join('');
+  $('#reviews').innerHTML = D.reviews.map(r=>`<figure class="person reveal" style="margin:0"><div class="avatar" style="background:${r.c}" aria-hidden="true">${r.n[0]}</div><blockquote>«${r[L]}»</blockquote><figcaption><strong>${r.n.split(' / ')[L==='ru'?0:1]||r.n}</strong></figcaption></figure>`).join('');
+  $('#gallery').innerHTML = D.gallery.map((g,i)=>`<button type="button" data-lb="${i}" aria-label="${esc(g[L])}">${img(g.art,g[L])}</button>`).join('');
+  $('#faq').innerHTML = D.faq.map(f=>`<details><summary>${f[L][0]}</summary><p>${f[L][1]}</p></details>`).join('');
+}
+function infoBlock(){ return `<div class="info reveal"><h3>${s('info_t')}</h3><ul>${D.info[L].map(x=>`<li>${x}</li>`).join('')}</ul></div>`; }
+
+/* F3: фильтр маршрутов */
+function fillFilters(){
+  const keep = ['fDur','fLvl','fPrice'].map(id=>$('#'+id).value);
+  $('#fDur').innerHTML = `<option value="">${s('any_f')}</option><option value="1">${s('d1')}</option><option value="2">${s('d2')}</option><option value="3">${s('d3')}</option>`;
+  $('#fLvl').innerHTML = `<option value="">${s('any')}</option>`+[0,1,2].map(i=>`<option value="${i}">${lvName(i)}</option>`).join('');
+  $('#fPrice').innerHTML = `<option value="">${s('p_any')}</option>`+[3000,5000,7000,10000].map(p=>`<option value="${p}">${money(p)}</option>`).join('');
+  ['fDur','fLvl','fPrice'].forEach((id,i)=>$('#'+id).value=keep[i]);
+}
+function renderWalks(){
+  const d=$('#fDur').value, l=$('#fLvl').value, p=$('#fPrice').value;
+  const list = D.walks.filter(w=>
+    (!d || (d==='1'&&w.hours<=2) || (d==='2'&&w.hours>=2&&w.hours<=4) || (d==='3'&&w.hours>=4)) &&
+    (l==='' || w.level===+l) && (!p || w.price<=+p));
+  $('#walkList').innerHTML = list.length ? list.map(w=>walkCard(w)).join('') : `<p class="empty">${s('none')}</p>`;
+  $('#count').textContent = s('found')+list.length;
+}
+function renderTours(){
+  $('#tourList').innerHTML = D.tours.map(t=>{const x=t[L];return `<article class="tour reveal">${img(t.art,x.t)}<div class="body">
+    <h2 style="font-size:1.6rem">${x.t}</h2><p>${x.d}</p>
+    <ul class="meta"><li>📅 ${t.days} ${s('days')}</li><li>${s('season')}: ${x.season}</li></ul>
+    <div class="price">${s('from')} ${money(t.price)} ${s('per')}</div>
+    <h4>${s('prog')}</h4><ol>${x.prog.map(p=>`<li>${p}</li>`).join('')}</ol>
+    <h4>${s('map')}</h4>${routeMap(t.stops)}
+    <h4>${s('stay')}</h4><p>${x.stay}</p>
+    <h4>${s('incl')}</h4><ul class="plain">${x.incl.map(i=>`<li>${i}</li>`).join('')}</ul>
+    <h4>${s('req')}</h4><p>${x.req}</p>
+    <h4>${s('dates')}</h4><ul class="dates">${t.dates.map(d=>`<li>${d}</li>`).join('')}</ul>
+    <p style="margin-top:18px"><button class="btn" data-book="${t.id}">${s('book')}</button></p></div></article>`}).join('');
+}
+function renderAbout(){
+  $('#team').innerHTML = D.team.map(m=>`<div class="person reveal"><div class="avatar" style="background:${m.c}" aria-hidden="true">${m.n[0]}</div><h3>${m.n.split(' / ')[L==='ru'?0:1]}</h3><p>${m[L]}</p></div>`).join('');
+  $('#safety').innerHTML = D.safety[L].map(x=>`<li>${x}</li>`).join('');
+  $('#care').innerHTML = D.care[L].map(x=>`<li>${x}</li>`).join('');
+}
+function renderPricing(){
+  $('#priceTbl').innerHTML = `<thead><tr><th>${s('th_walk')}</th><th>${s('th_dur')}</th><th>${s('th_price')}</th></tr></thead><tbody>`+
+   D.walks.map(w=>`<tr><td>${esc(w[L][0])}</td><td>${w.hours} ${s('hours')}</td><td>${money(w.price)}</td></tr>`).join('')+
+   D.tours.map(t=>`<tr><td>${t[L].t}</td><td>${t.days} ${s('days')}</td><td>${s('from')} ${money(t.price)}</td></tr>`).join('')+'</tbody>';
+  $('#conds').innerHTML = D.conds[L].map(c=>`<div class="adv reveal" style="text-align:left"><h3>${c[0]}</h3><p>${c[1]}</p></div>`).join('');
+}
+function renderContacts(){
+  $('#contactInfo').innerHTML = `<h2>${s('contact_h')}</h2>
+   <p><strong>${s('addr')}:</strong> [ул. Луговая, 1, ${L==='ru'?'Город':'City'}]</p>
+   <p><strong>${s('phone')}:</strong> <a href="tel:+7000000000">+7 [000] 000-00-00</a></p>
+   <p><strong>${s('hours_t')}:</strong> ${s('hours_v')}</p>
+   <p><strong>${s('how')}:</strong> ${s('how_v')}</p>
+   <p><strong>${s('soc')}:</strong><br><a href="https://wa.me/[70000000000]">WhatsApp</a> · <a href="https://t.me/[username]">Telegram</a> · <a href="https://instagram.com/[club]">Instagram</a> · <a href="https://vk.com/[club]">VK</a></p>`;
+  $('#mapframe').title = s('contact_h');
+}
+
+/* ---------- F1: форма заявки ---------- */
+function formHTML(id){
+  const opts = D.walks.map(w=>`<option value="${w.id}">${esc(w[L][0])}</option>`).join('')+D.tours.map(t=>`<option value="${t.id}">${esc(t[L].t)}</option>`).join('');
+  return `<form class="form" novalidate data-id="${id}">
+   <label class="full">${s('fm_route')}<select name="route"><option value="">—</option>${opts}</select></label>
+   <label>${s('fm_name')}<input name="name" autocomplete="name" required aria-describedby="${id}-e-name"><span class="err" id="${id}-e-name" aria-live="polite"></span></label>
+   <label>${s('fm_phone')}<input name="phone" type="tel" autocomplete="tel" placeholder="+7 ___ ___-__-__" required aria-describedby="${id}-e-phone"><span class="err" id="${id}-e-phone" aria-live="polite"></span></label>
+   <label>${s('fm_date')}<input name="date" type="date" required aria-describedby="${id}-e-date"><span class="err" id="${id}-e-date" aria-live="polite"></span></label>
+   <label>${s('fm_people')}<input name="people" type="number" min="1" max="20" value="2" required aria-describedby="${id}-e-people"><span class="err" id="${id}-e-people" aria-live="polite"></span></label>
+   <label class="full">${s('fm_level')}<select name="level">${[0,1,2].map(i=>`<option value="${i}">${lvName(i)}</option>`).join('')}</select></label>
+   <label class="full">${s('fm_comment')}<textarea name="comment" rows="2"></textarea></label>
+   <div class="full"><button class="btn" type="submit">${s('fm_send')}</button></div>
+  </form>`;
+}
+function renderForms(){
+  $$('.form-host').forEach(h=>{ h.innerHTML = formHTML(h.dataset.form); syncForms(); });
+}
+function syncForms(){
+  $$('.form').forEach(f=>{
+    if(selectedDate) f.elements.date.value = selectedDate;
+    if(selectedRoute) f.elements.route.value = selectedRoute;
+    f.elements.date.min = isoDate(new Date());
+  });
+}
+function validate(f){
+  const v = n => f.elements[n].value.trim(), id = f.dataset.id, e = {};
+  if(v('name').length<2) e.name = s('e_name');
+  if(!/^\+?[\d\s()\-]{7,}$/.test(v('phone')) || v('phone').replace(/\D/g,'').length<7) e.phone = s('e_phone');
+  if(!v('date') || v('date') < isoDate(new Date())) e.date = s('e_date');
+  const n = +v('people'); if(!(n>=1 && n<=20)) e.people = s('e_people');
+  ['name','phone','date','people'].forEach(k=>{
+    $('#'+id+'-e-'+k).textContent = e[k]||'';
+    f.elements[k].setAttribute('aria-invalid', e[k]?'true':'false');
+  });
+  const first = Object.keys(e)[0]; if(first) f.elements[first].focus();
+  return !first;
+}
+document.addEventListener('submit',ev=>{
+  const f = ev.target.closest('.form'); if(!f) return;
+  ev.preventDefault();
+  if(!validate(f)) return;
+  /* TODO: отправка на сервер, напр. fetch('/api/request',{method:'POST',body:new FormData(f)}) */
+  f.innerHTML = `<p class="ok" role="status" tabindex="-1">${s('ok')}</p>`;
+  f.querySelector('.ok').focus();
+});
+
+/* ---------- F2: календарь доступных дат ---------- */
+const isoDate = d => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+/* Демо-логика: свободно по пятницам–воскресеньям и по числам, кратным 3, кроме «занятых». Замените запросом к вашей CRM. */
+function isFree(d){
+  const today = new Date(); today.setHours(0,0,0,0);
+  if(d<today) return false;
+  if(d.getDate()%7===4) return false;
+  return [0,5,6].includes(d.getDay()) || d.getDate()%3===0;
+}
+function renderCalendar(){
+  const host = $('#calendar'); if(!host) return;
+  const y = calMonth.getFullYear(), m = calMonth.getMonth();
+  const first = (new Date(y,m,1).getDay()+6)%7, days = new Date(y,m+1,0).getDate();
+  const title = calMonth.toLocaleDateString(L==='ru'?'ru-RU':'en-US',{month:'long',year:'numeric'});
+  let cells = s('dow').map(d=>`<div class="dow" aria-hidden="true">${d}</div>`).join('') + '<span></span>'.repeat(first);
+  for(let d=1; d<=days; d++){
+    const dt = new Date(y,m,d), iso = isoDate(dt);
+    cells += isFree(dt)
+      ? `<button type="button" class="free" data-date="${iso}" aria-pressed="${iso===selectedDate}" aria-label="${dt.toLocaleDateString(L==='ru'?'ru-RU':'en-US',{day:'numeric',month:'long'})}">${d}</button>`
+      : `<span class="x" aria-hidden="true">${d}</span>`;
+  }
+  host.innerHTML = `<div class="cal"><div class="cal-head"><button type="button" id="calPrev" aria-label="←">‹</button><span aria-live="polite">${title}</span><button type="button" id="calNext" aria-label="→">›</button></div><div class="cal-grid">${cells}</div><p class="cal-legend">${s('cal_free')}</p></div>`;
+}
+document.addEventListener('click',ev=>{
+  const t = ev.target;
+  if(t.closest('#calPrev')){ calMonth.setMonth(calMonth.getMonth()-1); renderCalendar(); $('#calPrev').focus(); }
+  else if(t.closest('#calNext')){ calMonth.setMonth(calMonth.getMonth()+1); renderCalendar(); $('#calNext').focus(); }
+  else if(t.closest('[data-date]')){ selectedDate = t.closest('[data-date]').dataset.date; renderCalendar(); syncForms(); }
+  else if(t.closest('[data-book]')){ selectedRoute = t.closest('[data-book]').dataset.book; syncForms(); location.hash = '#/pricing'; }
+  else if(t.closest('[data-lb]')) openLb(+t.closest('[data-lb]').dataset.lb);
+});
+
+/* ---------- F5: лайтбокс ---------- */
+let lbIdx = 0; const lb = $('#lb');
+function showLb(){ const g = D.gallery[lbIdx]; $('#lbImg').src = art(g.art,g[L]); $('#lbImg').alt = g[L]; $('#lbCap').textContent = g[L]; }
+function openLb(i){ lbIdx=i; showLb(); lb.showModal ? lb.showModal() : lb.setAttribute('open',''); }
+$('#lbClose').onclick = ()=>lb.close();
+$('#lbPrev').onclick = ()=>{ lbIdx=(lbIdx-1+D.gallery.length)%D.gallery.length; showLb(); };
+$('#lbNext').onclick = ()=>{ lbIdx=(lbIdx+1)%D.gallery.length; showLb(); };
+lb.addEventListener('keydown',e=>{ if(e.key==='ArrowLeft') $('#lbPrev').click(); if(e.key==='ArrowRight') $('#lbNext').click(); });
+lb.addEventListener('click',e=>{ if(e.target===lb) lb.close(); });
+
+/* ---------- Язык, SEO, роутинг ---------- */
+const META = {
+ home:{ru:["Все смешалось — люди, кони | Конные прогулки и туры","Конные прогулки в [регион], конные туры по миру. Спокойные лошади, опытные инструкторы, маленькие группы. Записаться онлайн."],
+        en:["Everything Mixed Up — People & Horses | Horse rides & tours","Horse riding in [region] and riding tours worldwide. Calm horses, experienced instructors, small groups. Book online."]},
+ walks:{ru:["Конные прогулки — покататься на лошадях | Все смешалось","Каталог конных прогулок: на 1–2 часа, на полдня, закат и рассвет, романтические, семейные и детские. Цены и онлайн-бронирование."],
+        en:["Horse rides — go horse riding | Everything Mixed Up","Catalog of horse rides: 1–2 hours, half-day, sunset and sunrise, romantic, family and kids. Prices and online booking."]},
+ tours:{ru:["Конные туры и путешествия | Все смешалось","Многодневные конные туры: Алтай, побережье, Исландия. Программа по дням, ночлег, питание, ближайшие даты."],
+        en:["Horse riding tours | Everything Mixed Up","Multi-day riding tours: Altai, the coast, Iceland. Day-by-day program, lodging, meals, upcoming dates."]},
+ about:{ru:["О конном клубе | Все смешалось — люди, кони","История клуба, философия, команда инструкторов, правила безопасности и забота о лошадях."],
+        en:["About the riding club | Everything Mixed Up","Our story, philosophy, instructors, safety rules and horse welfare."]},
+ pricing:{ru:["Цены и бронирование конных прогулок | Все смешалось","Прайс-лист, условия отмены, скидки, подарочные сертификаты и форма бронирования с календарём свободных дат."],
+        en:["Prices & booking | Everything Mixed Up","Price list, cancellation terms, discounts, gift certificates and a booking form with an availability calendar."]},
+ contacts:{ru:["Контакты конного клуба | Все смешалось","Адрес, карта, как добраться, телефон, WhatsApp, Telegram и часы работы конного клуба."],
+        en:["Contacts | Everything Mixed Up","Address, map, directions, phone, WhatsApp, Telegram and opening hours."]}};
+
+function applyI18n(){
+  document.documentElement.lang = L;
+  $$('[data-i18n]').forEach(el=>el.textContent = s(el.dataset.i18n));
+  $('#lang').textContent = L==='ru' ? 'EN' : 'RU';
+  $('#lang').setAttribute('aria-label', L==='ru' ? 'Switch to English' : 'Переключить на русский');
+  $('#heroImg').src = art('sunset', '', true); $('#heroImg').alt = L==='ru' ? 'Всадник на лошади в поле на закате' : 'Rider on horseback in a field at sunset';
+  fillFilters(); renderHome(); renderWalks(); renderTours(); renderAbout(); renderPricing(); renderContacts();
+  $('#infoWalks').innerHTML = infoBlock(); $('#infoPricing').innerHTML = infoBlock();
+  renderForms(); renderCalendar(); setMeta(); observe();
+}
+function setMeta(){
+  const m = META[curRoute][L];
+  document.title = m[0];
+  $('meta[name="description"]').setAttribute('content', m[1]);
+}
+function route(first){
+  const r = (location.hash.replace(/^#\/?/,'')||'home').split('?')[0];
+  curRoute = META[r] ? r : 'home';
+  $$('[data-page]').forEach(p=>p.hidden = p.dataset.page!==curRoute);
+  $$('[data-route]').forEach(a=>a.dataset.route===curRoute ? a.setAttribute('aria-current','page') : a.removeAttribute('aria-current'));
+  $('#nav').classList.remove('open'); $('#burger').setAttribute('aria-expanded','false');
+  setMeta();
+  window.scrollTo(0,0);
+  if(!first) $('#main').focus({preventScroll:true});
+  observe();
+}
+window.addEventListener('hashchange',()=>route(false));
+$('#lang').onclick = ()=>{ L = L==='ru'?'en':'ru'; try{localStorage.setItem('lang',L)}catch(e){} applyI18n(); };
+$('#burger').onclick = ()=>{ const o = $('#nav').classList.toggle('open'); $('#burger').setAttribute('aria-expanded',o); };
+['fDur','fLvl','fPrice'].forEach(id=>$('#'+id).addEventListener('change',renderWalks));
+$('#filters').addEventListener('submit',e=>e.preventDefault());
+
+/* Плавное появление при прокрутке */
+let io = null;
+function observe(){
+  const els = $$('.reveal:not(.in)');
+  if(!('IntersectionObserver' in window)){ els.forEach(e=>e.classList.add('in')); return; }
+  io = io || new IntersectionObserver(es=>es.forEach(x=>{ if(x.isIntersecting){ x.target.classList.add('in'); io.unobserve(x.target); } }),{threshold:.12});
+  els.forEach(e=>io.observe(e));
+}
+
+applyI18n();
+route(true);
+</script>
+</body>
+</html>
